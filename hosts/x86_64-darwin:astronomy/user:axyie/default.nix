@@ -1,4 +1,6 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+
+{
   home-manager = { pkgs, config, ... }: {
     home.stateVersion = "23.05";
     home.packages = with pkgs; [
@@ -11,12 +13,24 @@
       pass
       gh
       coreutils
+      mpv
       nodejs_20
-      nodePackages.npm
       nodePackages.pnpm
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
+      nixpkgs-fmt
+      nix-prefetch-git
+      rustup
+      qbittorrent
     ];
 
     imports = [
+      ../../../programs/kitty.nix
+      #../../../programs/neovim
+      ../../../programs/pywal.nix
+      ../../../programs/sketchybar
       ./shell.nix
     ];
 

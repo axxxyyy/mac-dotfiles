@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Source the pywal color file
+source ~/.cache/wal/colors.sh
+
+# Function to strip '#' from color variables and add '0xff' to the start
+strip_colors() {
+    local color=$1
+    echo "0xff${color#\#}"
+}
+
+# Function to generate a darker shade of a given color
+lighter_shade() {
+    local color=$1
+    local darker_color=$(printf "%x" $(($(printf "%d" 0x$color) + 0x090909)))
+    echo $darker_color
+}
+
+# Color Palette
+export BLACK=$(strip_colors $color0)
+export WHITE=$(strip_colors $color7)
+export RED=$(strip_colors $color1)
+export GREEN=$(strip_colors $color2)
+export BLUE=$(strip_colors $color4)
+export YELLOW=$(strip_colors $color3)
+export ORANGE=$(strip_colors $color9)
+export MAGENTA=$(strip_colors $color5)
+export GREY=$(strip_colors $color8)
+export TRANSPARENT=0x00000000
+
+# Shades of background color
+export BACKGROUND_1=0xff$(lighter_shade ${background:1}) # Darker shade of background color
+export BACKGROUND_2=0xff$(lighter_shade ${BACKGROUND_1:4}) # Even darker shade of background color
+
+# General bar colors
+export BAR_COLOR=$(strip_colors $background)
+export BAR_BORDER_COLOR=$BACKGROUND_2 # $(strip_colors $color8) #0xa024273a
+export ICON_COLOR=$WHITE # Color of all icons
+export LABEL_COLOR=$WHITE # Color of all labels
+
+export POPUP_BACKGROUND_COLOR=$(strip_colors $background)
+export POPUP_BORDER_COLOR=$WHITE
+
+export SHADOW_COLOR=$BLACK

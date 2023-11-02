@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }@inputs:
+
 let
   users = {
     axyie = import (./user + ":axyie") inputs;
@@ -14,6 +15,7 @@ let
   getHomeUsers = lib.attrsets.mergeAttrsList (forAll (username: imported:
     imported.home-manager));
 in
+
 {
   programs.zsh.enable = true;
   services.nix-daemon.enable = true;
@@ -23,10 +25,7 @@ in
   '';
   users.users = getUsers;
   home-manager.users = getHomeUsers;
-
-  # -- Dock
-  system.defaults.dock = {
-    autohide = false;
-    show-recents = false;
-  };
+  imports = [ 
+    ../../programs/rectangle.nix
+  ];
 }

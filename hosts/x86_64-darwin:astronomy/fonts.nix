@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+
+{
   fonts = {
     fontDir.enable = true;
-    fonts = [
-      (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; })
+    fonts = with pkgs; [
+      iosevka
+      (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" ]; })
     ];
   };
 }

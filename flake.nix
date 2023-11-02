@@ -35,7 +35,6 @@
             (./hosts + "/${target}:${host}")
             (./hosts + "/${target}:${host}/fonts.nix")
             (./hosts + "/${target}:${host}/homebrew.nix")
-            (./hosts + "/${target}:${host}/yabai.nix")
           ];
           specialArgs = { inherit inputs; };
         });
