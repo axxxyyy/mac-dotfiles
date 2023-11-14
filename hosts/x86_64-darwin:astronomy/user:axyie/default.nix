@@ -24,13 +24,13 @@
       nix-prefetch-git
       rustup
       qbittorrent
+      ii
     ];
 
     imports = [
-      ../../../programs/kitty.nix
-      #../../../programs/neovim
-      ../../../programs/pywal.nix
+       #../../../programs/neovim
       ../../../programs/sketchybar
+      ../../../programs/wallust.nix
       ./shell.nix
     ];
 

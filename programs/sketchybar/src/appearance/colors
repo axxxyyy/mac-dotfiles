@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the pywal color file
-source ~/.cache/wal/colors.sh
+source ~/Library/Caches/wallust/scripts/colors.sh
 
 # Function to strip '#' from color variables and add '0xff' to the start
 strip_colors() {

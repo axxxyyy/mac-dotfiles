@@ -44,7 +44,12 @@
     brews = [
       "sketchybar"
       "switchaudio-osx"
-      "pidof"
+
+      # privacy
+      "tor"
+      "torsocks"
+      "curl"
+      "openssl"
     ];
   };
 }
